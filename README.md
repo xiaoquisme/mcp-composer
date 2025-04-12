@@ -2,21 +2,28 @@
 
 ![UI Demo](./images/ui.gif)
 
-This is a gateway service for MCP servers scheduler that dynamically manages connections to multiple MCP servers and their available tools. It exposes a port as an interface for MCP clients and supports creating multiple ports to accommodate different combinations of MCP servers.
+MCP Composer is a gateway service that **centrally manages** all your MCP servers. You can use it to consolidate all the MCP servers you need and open independent ports with different combinations of servers and tools for each service (like AI agents or tools) that requires access to MCP servers.
 
 ## Key Features
 
-*   **Built on FastAPI**: A modern, high-performance web framework with automated interactive API documentation.
-*   **MCP Integration**: Utilizes the `mcp` library to interact with Minecraft-related protocols or servers (specific functionality depends on the implementation in `src/main.py`).
-*   **Pydantic Data Validation**: Strict data validation using Python type hints.
-*   **Configuration-Driven**: Easily manage target servers through the `mcp_servers.json` file.
-*   **Asynchronous Support**: Leverages Python's `async`/`await` syntax for high-performance asynchronous operations.
-*   **MCP Gateway**: Connects, dispatches, and manages multiple backend MCP servers through a single interface.
-*   **Dynamic Tool Management**: Dynamically manages tools available to clients from backend MCP servers.
+*   **Dynamic MCP Server Management**: Dynamically manages connections to multiple MCP servers and their tools, enabling on-the-fly activation or deactivation of services.
+*   **Unified SSE Interface**: Exposes a single Server-Sent Events (SSE) interface that provides access to all capabilities of the managed MCP servers.
+*   **Multiple Dynamic Endpoints**: Supports dynamic creation and removal of multiple SSE endpoints to accommodate different AI agents or AI tools.
+*   **Independent Interface Configuration**: Each SSE interface independently manages its own combination of MCP servers and tools, allowing for customized service provision.
 
 ## System Architecture
 
 ![MCP Composer Architecture Diagram](./images/architecture.png)
+
+### Key Terms
+
+* **MCP Client**: External tools or AI agents and AI workflows, such as Cursor, n8n, etc.
+* **Gateway[A/B]**: MCP server implementation bound to ServerKit and managed by the Composer, used to handle MCP Client connections.
+* **Server Kit**: Manages and controls information about Downstream MCP servers and which tools within servers should be enabled.
+* **Downstream Controller**: Responsible for controlling and managing connections to Downstream MCP servers.
+* **Downstream MCP Server**: An internal object connecting to a Downstream MCP server, implemented as an internal MCP client that links to the Downstream MCP server.
+* **MCP Server**: External MCP server services, such as: https://github.com/modelcontextprotocol/servers etc.
+* **Composer**: Provides APIs to control and orchestrate Gateways, Server Kits, and Downstream Controllers.
 
 ## Requirements
 

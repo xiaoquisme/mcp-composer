@@ -7,11 +7,11 @@
         "@modelcontextprotocol/server-sequential-thinking"
       ]
     },
-    "filesystem": {
+    "everything": {
       "command": "npx",
       "args": [
         "-y",
-        "@modelcontextprotocol/server-filesystem"
+        "@modelcontextprotocol/server-everything"
       ]
     }
   }
