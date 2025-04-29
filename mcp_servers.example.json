@@ -16,6 +16,16 @@
     },
     "mcp-sse": {
       "url": "http://127.0.0.1:8001/mcp"
+    },
+    "postgres": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "mcp/postgres",
+        "postgresql://postgres:postgres@localhost:5432/postgres"
+      ]
     }
   }
 }
