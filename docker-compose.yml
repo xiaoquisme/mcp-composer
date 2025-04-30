@@ -4,8 +4,8 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - .:/app
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./mcp_servers.json:/app/mcp_servers.json
     environment:
       - MCP_SERVERS_CONFIG_PATH=/app/mcp_servers.json
       - MCP_COMPOSER_PROXY_URL=http://localhost:8000

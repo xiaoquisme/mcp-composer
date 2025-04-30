@@ -16,6 +16,8 @@ COPY uv.lock .
 
 RUN uv venv && uv sync
 
+COPY . .
+
 EXPOSE 8000
 
 CMD ["uv", "run", "src/main.py"]

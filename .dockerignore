@@ -1,0 +1,7 @@
+mcp_servers.json
+mcp_servers.example.json
+.venv
+.idea
+.env
+.env.example
+README.md
